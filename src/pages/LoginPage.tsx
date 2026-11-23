@@ -8,7 +8,7 @@ interface LoginPageProps {
 }
 
 export function LoginPage({ onLoginSuccess }: LoginPageProps) {
-  const [username, setUsername] = useState('admin');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -62,8 +62,9 @@ export function LoginPage({ onLoginSuccess }: LoginPageProps) {
                 onChange={(e) => setUsername(e.target.value)}
                 required
                 autoFocus
+                autoComplete="username"
                 className="w-full rounded-xl border border-slate-300 pr-10 pl-3 py-2.5 text-sm focus:border-sky-600 focus:ring-2 focus:ring-sky-100 outline-none"
-                placeholder="admin"
+                placeholder="أدخل اسم المستخدم"
               />
             </div>
           </div>
@@ -80,6 +81,7 @@ export function LoginPage({ onLoginSuccess }: LoginPageProps) {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
+                autoComplete="current-password"
                 className="w-full rounded-xl border border-slate-300 pr-10 pl-3 py-2.5 text-sm focus:border-sky-600 focus:ring-2 focus:ring-sky-100 outline-none"
                 placeholder="••••••••"
               />
@@ -94,41 +96,9 @@ export function LoginPage({ onLoginSuccess }: LoginPageProps) {
             {loading ? 'جاري الدخول...' : 'تسجيل الدخول'}
           </button>
 
-          <div className="bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs text-slate-600 space-y-1">
-            <div className="font-bold text-slate-800">بيانات الدخول الافتراضية (يمكن تغييرها من الإعدادات):</div>
-            <div className="flex flex-wrap gap-x-4 gap-y-1">
-              <button
-                type="button"
-                onClick={() => {
-                  setUsername('admin');
-                  setPassword('admin123');
-                }}
-                className="text-sky-700 hover:underline font-semibold"
-              >
-                مدير: admin / admin123
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  setUsername('cashier');
-                  setPassword('1234');
-                }}
-                className="text-emerald-700 hover:underline font-semibold"
-              >
-                كاشير: cashier / 1234
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  setUsername('warehouse');
-                  setPassword('1234');
-                }}
-                className="text-amber-700 hover:underline font-semibold"
-              >
-                مخزن: warehouse / 1234
-              </button>
-            </div>
-          </div>
+          <p className="text-center text-xs text-slate-500 pt-1">
+            للحصول على بيانات الدخول أو استعادة كلمة المرور يرجى مراجعة إدارة المتجر.
+          </p>
         </form>
       </div>
     </div>
