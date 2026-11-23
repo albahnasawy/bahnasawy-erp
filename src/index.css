@@ -1,0 +1,55 @@
+@import '@fontsource/cairo/400.css';
+@import '@fontsource/cairo/600.css';
+@import '@fontsource/cairo/700.css';
+@import '@fontsource/cairo/800.css';
+@import 'tailwindcss';
+
+@layer base {
+  body {
+    font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+  }
+}
+
+#print-root {
+  display: none;
+}
+
+@media print {
+  #app-shell,
+  .no-print {
+    display: none !important;
+  }
+
+  #print-root {
+    display: block !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    direction: rtl;
+  }
+
+  body[data-print-mode='80mm'] {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+  }
+
+  body[data-print-mode='80mm'] #print-root {
+    width: 76mm !important;
+    margin: 0 auto !important;
+    font-size: 11px !important;
+  }
+
+  body[data-print-mode='labels-50x25'] #print-root {
+    width: 50mm !important;
+    margin: 0 !important;
+  }
+
+  .label-page-break {
+    page-break-after: always;
+    break-after: page;
+  }
+}
+
+@page {
+  margin: 8mm;
+}
